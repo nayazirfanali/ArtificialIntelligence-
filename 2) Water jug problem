@@ -1,0 +1,44 @@
+from collections import deque
+
+def is_solvable(x, y, z):
+    if z > max(x, y) or z % gcd(x, y) != 0:
+        return False
+    return True
+
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+def water_jug(x, y, z):
+    if not is_solvable(x, y, z):
+        return "No solution"
+
+    visited = set()
+    queue = deque([(0, 0)])
+
+    while queue:
+        a, b = queue.popleft()
+
+        if a == z or b == z or a + b == z:
+            return f"Solution found: Jug X = {a}, Jug Y = {b}"
+
+        if (a, b) in visited:
+            continue
+
+        visited.add((a, b))
+
+        queue.append((x, b))  # Fill jug X
+        queue.append((a, y))  # Fill jug Y
+        queue.append((0, b))  # Empty jug X
+        queue.append((a, 0))  # Empty jug Y
+        queue.append((max(0, a - (y - b)), min(y, a + b)))  # Pour from X to Y
+        queue.append((min(x, a + b), max(0, b - (x - a))))  # Pour from Y to X
+
+    return "No solution"
+
+x = 4
+y = 3
+z = 2
+
+print(water_jug(x, y, z))
