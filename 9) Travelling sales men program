@@ -1,0 +1,47 @@
+import itertools
+
+def travelling_salesman_problem(graph, start):
+    n = len(graph)
+    all_nodes = range(n)
+
+    dp = {}
+
+    # Initialize dp table for single-node subsets excluding the start node
+    for subset_size in range(1, n):
+        for subset in itertools.combinations(all_nodes, subset_size):
+            if start in subset:
+                continue
+            dp[(subset, subset[0])] = float('inf')
+
+    # Set the starting point, no cost to start at the starting node
+    dp[((start,), start)] = 0
+
+    # Fill dp table for larger subsets
+    for subset_size in range(2, n + 1):
+        for subset in itertools.combinations(all_nodes, subset_size):
+            if start not in subset:
+                continue
+            for k in subset:
+                if k == start:
+                    continue
+                prev_subset = tuple([x for x in subset if x != k])
+                dp[(subset, k)] = float('inf')
+                for m in prev_subset:
+                    if (prev_subset, m) in dp:
+                        dp[(subset, k)] = min(dp[(subset, k)], dp[(prev_subset, m)] + graph[m][k])
+
+    # Calculate the minimum cost to complete the cycle
+    final_res = min(dp[(tuple(all_nodes), k)] + graph[k][start] for k in range(1, n))
+
+    return final_res
+
+graph = [
+    [0, 10, 15, 20],
+    [10, 0, 35, 25],
+    [15, 35, 0, 30],
+    [20, 25, 30, 0]
+]
+
+start_node = 0
+result = travelling_salesman_problem(graph, start_node)
+print("Minimum cost:", result)
