@@ -1,0 +1,25 @@
+from itertools import permutations
+
+def is_valid_solution(s1, s2, s3, mapping):
+    num1 = int("".join(str(mapping[c]) for c in s1))
+    num2 = int("".join(str(mapping[c]) for c in s2))
+    num3 = int("".join(str(mapping[c]) for c in s3))
+    return num1 + num2 == num3
+
+def solve_cryptarithmetic(s1, s2, s3):
+    letters = set(s1 + s2 + s3)
+    if len(letters) > 10:
+        return "No solution"
+
+    for perm in permutations(range(10), len(letters)):
+        mapping = dict(zip(letters, perm))
+        if is_valid_solution(s1, s2, s3, mapping):
+            return {letter: mapping[letter] for letter in letters}
+
+    return "No solution"
+
+s1 = "SEND"
+s2 = "MORE"
+s3 = "MONEY"
+
+print(solve_cryptarithmetic(s1, s2, s3))
