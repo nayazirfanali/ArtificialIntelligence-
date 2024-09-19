@@ -79,6 +79,81 @@ Ensure that cannibals never outnumber missionaries on either side.
 The goal is to get all the missionaries and cannibals across the river safely.
 
 
+**PROLOG PROGRAMS**
+
+**1) 1. Sum of Integers from 1 to N Algorithm:**
+
+Base Case: If N is 0, return 0.
+Recursive Case:
+Subtract 1 from N.
+Recursively calculate the sum of integers from 1 to N-1.
+Add N to the result.
+
+**2. Database with NAME, DOB Algorithm:**
+
+Define Facts: Create facts for each person with their Name, Day, Month, and Year of birth.
+Queries:
+Find DOB: Search for a specific name and retrieve the corresponding DOB.
+Find People by Month/Year: Search for people born in a given month or year.
+
+**3. STUDENT - TEACHER - SUB - CODE Algorithm:**
+
+Define Facts: Create facts for each Student, Teacher, Subject, and Code.
+Queries:
+Find Subject and Code for Student: Search for a specific student and retrieve their subject and code.
+Find Teacher for Student: Search for a student and retrieve their teacher.
+Find Students of a Teacher: Search for a teacher and retrieve their students.
+Find Students in Subject: Search for a subject and retrieve the enrolled students.
+Find Subject Code by Teacher: Search for a teacher and retrieve the subject and code they teach.
+
+**4. Planets Database Algorithm:**
+
+Define Facts: Create facts for each planet with its Name, Distance from the Sun, Diameter, and Number of Moons.
+Queries:
+Find Planet Details: Search for a specific planet and retrieve its details.
+Find Planets with Moons: Search for planets with a given number of moons.
+Find Planets within Distance: Search for planets within a specified distance from the Sun.
+Find Planets Larger than Diameter: Search for planets with a diameter larger than a given value.
+
+**5. Tower of Hanoi Algorithm:**
+
+Base Case: If N is 1, move the disk directly from Source to Destination.
+Recursive Case:
+Move N-1 disks from Source to Auxiliary using Destination as temporary.
+Move the largest disk from Source to Destination.
+Move N-1 disks from Auxiliary to Destination using Source as temporary.
+
+**6. Bird Flight Algorithm:**
+
+Define Facts: Create facts for birds and whether they can fly.
+Rule: Check if a bird is in the bird fact and not in the flightless fact.
+
+**7. Family Tree Algorithm:**
+
+Define Facts: Create facts for parent-child relationships and genders (optional).
+Define Rules: Define rules for father, mother, sibling, grandparent, ancestor, uncle, aunt, and cousin relationships.
+Query: Use queries to retrieve specific relationships or information about family members.
+
+**8. Medical Diagnosis Algorithm:**
+
+Define Facts: Create facts for diseases and their associated symptoms.
+User Input: Collect symptoms from the user.
+Inference: Use Prolog's inference engine to match symptoms with diseases.
+Output: Present the possible diagnosis.
+
+**9. Monkey and Banana Problem Algorithm:**
+
+Define State: Represent the initial state (monkey on ground, box on ground, bananas hanging).
+Define Actions: Define possible actions (move, climb, push, take).
+Define Goal: Define the goal state (monkey has bananas).
+Plan: Use depth-first search or breadth-first search to find a sequence of actions to reach the goal.
+
+
+
+
+
+
+
 
 
 
